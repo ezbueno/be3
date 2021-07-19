@@ -7,7 +7,7 @@
 ## Ferramentas utilizadas na construção do projeto:
 * [**Git**](https://git-scm.com/)
 * [**Spring Tool Suite**](https://spring.io/tools)
-* [**Dbeaver**](https://dbeaver.io/)
+* [**DBeaver**](https://dbeaver.io/)
 
 ## Funcionalidades da aplicação:
 * Cadastro de pacientes e seus respectivos convênios.
