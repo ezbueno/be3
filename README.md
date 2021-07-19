@@ -6,7 +6,6 @@
 
 ## Ferramentas utilizadas na construção do projeto:
 * [**Git**](https://git-scm.com/)
-* [**Java 11**](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
 * [**Spring Tool Suite**](https://spring.io/tools)
 * [**Dbeaver**](https://dbeaver.io/)
 
