@@ -18,49 +18,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import bueno.ezandro.entities.Cliente;
+import bueno.ezandro.entities.Paciente;
 import bueno.ezandro.exceptions.ArgumentNotValidException;
-import bueno.ezandro.services.ClienteService;
+import bueno.ezandro.services.PacienteService;
 
 @RestController
-@RequestMapping(value = "/clientes")
-public class ClienteController {
+@RequestMapping(value = "/pacientes")
+public class PacienteController {
 
 	@Autowired
-	private ClienteService clienteService;
+	private PacienteService pacienteService;
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Cliente>> findAll() {
-		List<Cliente> clientes = this.clienteService.findAll();
-		return ResponseEntity.ok().body(clientes);
+	public ResponseEntity<List<Paciente>> findAll() {
+		List<Paciente> pacientes = this.pacienteService.findAll();
+		return ResponseEntity.ok().body(pacientes);
 	}
 
 	@GetMapping(value = "/{prontuario_id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Cliente> findById(@PathVariable Integer prontuario_id) {
-		Cliente cliente = this.clienteService.findById(prontuario_id);
-		return ResponseEntity.ok().body(cliente);
+	public ResponseEntity<Paciente> findById(@PathVariable Integer prontuario_id) {
+		Paciente paciente = this.pacienteService.findById(prontuario_id);
+		return ResponseEntity.ok().body(paciente);
 	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Cliente> create(@Valid @RequestBody Cliente cliente) throws ArgumentNotValidException {
-		Cliente clienteCreate = this.clienteService.create(cliente);
+	public ResponseEntity<Paciente> create(@Valid @RequestBody Paciente paciente) throws ArgumentNotValidException {
+		Paciente pacienteCreate = this.pacienteService.create(paciente);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(clienteCreate.getProntuario()).toUri();
+				.buildAndExpand(pacienteCreate.getProntuario()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
 	@PutMapping(value = "/{prontuario_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Cliente> update(@PathVariable Integer prontuario_id, @Valid @RequestBody Cliente cliente)
+	public ResponseEntity<Paciente> update(@PathVariable Integer prontuario_id, @Valid @RequestBody Paciente paciente)
 			throws ArgumentNotValidException {
-		Cliente clienteUpdate = this.clienteService.update(prontuario_id, cliente);
+		Paciente pacienteUpdate = this.pacienteService.update(prontuario_id, paciente);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(clienteUpdate.getProntuario()).toUri();
+				.buildAndExpand(pacienteUpdate.getProntuario()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 
 	@DeleteMapping(value = "/{prontuario_id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> delete(@PathVariable Integer prontuario_id) {
-		this.clienteService.delete(prontuario_id);
+		this.pacienteService.delete(prontuario_id);
 		return ResponseEntity.noContent().build();
 	}
 

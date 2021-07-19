@@ -22,20 +22,20 @@ public class ResourceExceptionHandler extends ResponseEntityExceptionHandler {
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		List<ErrorObjectException> errors = getErrors(ex);
-		ErrorResponseException errorResponse = getErrorResponse(ex, status, errors);
+		List<ErrorObject> errors = getErrors(ex);
+		ErrorResponse errorResponse = getErrorResponse(ex, status, errors);
 		return new ResponseEntity<>(errorResponse, status);
 	}
 
-	private ErrorResponseException getErrorResponse(MethodArgumentNotValidException ex, HttpStatus status,
-			List<ErrorObjectException> errors) {
-		return new ErrorResponseException("Esta requisição possui campos inválidos!", status.value(), status.getReasonPhrase(),
+	private ErrorResponse getErrorResponse(MethodArgumentNotValidException ex, HttpStatus status,
+			List<ErrorObject> errors) {
+		return new ErrorResponse("Esta requisição possui campos inválidos!", status.value(), status.getReasonPhrase(),
 				ex.getBindingResult().getObjectName(), errors);
 	}
 
-	private List<ErrorObjectException> getErrors(MethodArgumentNotValidException ex) {
+	private List<ErrorObject> getErrors(MethodArgumentNotValidException ex) {
 		return ex.getBindingResult().getFieldErrors().stream()
-				.map(error -> new ErrorObjectException(error.getDefaultMessage(), error.getField(), error.getRejectedValue()))
+				.map(error -> new ErrorObject(error.getDefaultMessage(), error.getField(), error.getRejectedValue()))
 				.collect(Collectors.toList());
 	}
 

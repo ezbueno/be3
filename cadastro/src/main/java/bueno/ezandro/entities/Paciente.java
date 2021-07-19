@@ -22,15 +22,15 @@ import org.hibernate.validator.constraints.br.CPF;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name = "tb_cliente")
-public class Cliente implements Serializable {
+@Table(name = "tb_paciente")
+public class Paciente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public Cliente() {
+	public Paciente() {
 	}
 
-	public Cliente(Integer prontuario, String nome, String sobrenome, LocalDate dataNascimento, String genero,
+	public Paciente(Integer prontuario, String nome, String sobrenome, LocalDate dataNascimento, String genero,
 			String cpf, String rg, String uf, String email, String celular, String telefone) {
 		this.prontuario = prontuario;
 		this.nome = nome;
@@ -92,7 +92,7 @@ public class Cliente implements Serializable {
 	@Column(length = 11, nullable = true)
 	private String telefone;
 
-	@OneToMany(mappedBy = "cliente")
+	@OneToMany(mappedBy = "paciente")
 	private List<Convenio> convenios = new ArrayList<>();
 
 	public Integer getProntuario() {
@@ -203,7 +203,7 @@ public class Cliente implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Cliente other = (Cliente) obj;
+		Paciente other = (Paciente) obj;
 		if (prontuario == null) {
 			if (other.prontuario != null)
 				return false;

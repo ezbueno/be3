@@ -43,10 +43,10 @@ public class ConvenioController {
 	}
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Convenio> create(@RequestParam(value = "cliente", defaultValue = "0") Integer prontuario_id,
+	public ResponseEntity<Convenio> create(@RequestParam(value = "paciente", defaultValue = "0") Integer prontuario_id,
 			@Valid @RequestBody Convenio convenio) {
 		Convenio convenioCreate = this.convenioService.create(prontuario_id, convenio);
-		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/clientes/{id}")
+		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/pacientes/{id}")
 				.buildAndExpand(convenioCreate.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
@@ -56,7 +56,7 @@ public class ConvenioController {
 		Convenio convenioUpdate = this.convenioService.update(convenio_id, convenio);
 		return ResponseEntity.ok().body(convenioUpdate);
 	}
-	
+
 	@DeleteMapping(value = "/{convenio_id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> delete(@PathVariable Integer convenio_id) {
 		this.convenioService.delete(convenio_id);

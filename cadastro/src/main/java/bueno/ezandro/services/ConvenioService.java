@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import bueno.ezandro.entities.Cliente;
+import bueno.ezandro.entities.Paciente;
 import bueno.ezandro.entities.Convenio;
 import bueno.ezandro.exceptions.IntegrityViolationException;
 import bueno.ezandro.exceptions.ObjectNotFoundException;
@@ -21,7 +21,7 @@ public class ConvenioService {
 	private ConvenioRepository convenioRepository;
 
 	@Autowired
-	private ClienteService clienteService;
+	private PacienteService pacienteService;
 
 	@Transactional(readOnly = true)
 	public List<Convenio> findAll() {
@@ -37,8 +37,8 @@ public class ConvenioService {
 	@Transactional
 	public Convenio create(Integer prontuario_id, Convenio convenio) {
 		convenio.setId(null);
-		Cliente cli = this.clienteService.findById(prontuario_id);
-		convenio.setCliente(cli);
+		Paciente paciente = this.pacienteService.findById(prontuario_id);
+		convenio.setPaciente(paciente);
 		return this.convenioRepository.save(convenio);
 	}
 

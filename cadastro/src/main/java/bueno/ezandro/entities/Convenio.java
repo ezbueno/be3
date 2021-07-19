@@ -27,8 +27,8 @@ public class Convenio implements Serializable {
 
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "id_cliente")
-	private Cliente cliente;
+	@JoinColumn(name = "id_paciente")
+	private Paciente paciente;
 
 	@NotNull(message = "{numCarteirinhaConvenio.not.null}")
 	@Column(name = "numero_convenio", nullable = false)
@@ -41,9 +41,9 @@ public class Convenio implements Serializable {
 	public Convenio() {
 	}
 
-	public Convenio(Integer id, Cliente cliente, Integer numCarteirinhaConvenio, String validadeCarteirinha) {
+	public Convenio(Integer id, Paciente paciente, Integer numCarteirinhaConvenio, String validadeCarteirinha) {
 		this.id = id;
-		this.cliente = cliente;
+		this.paciente = paciente;
 		this.numCarteirinhaConvenio = numCarteirinhaConvenio;
 		this.validadeCarteirinha = validadeCarteirinha;
 	}
@@ -56,12 +56,12 @@ public class Convenio implements Serializable {
 		this.id = id;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public Paciente getPaciente() {
+		return paciente;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
 	public Integer getNumCarteirinhaConvenio() {
