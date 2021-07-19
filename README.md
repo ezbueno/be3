@@ -1,6 +1,4 @@
-<p align="center">🚀 API RESTful para cadastro de pacientes</p>
-
-* Este projeto visa a construção de uma aplicação API RESTful, para o processo seletivo de Desenvolvedor Java Jr. na empresa be3 health tech. Todas as requisições são realizadas diretamente ao back-end construído em Java (versão 11) utilizando Spring Framework.
+<p align="center">🚀 API RESTful para cadastro de pacientes e convênios</p>
 
 ## Tecnologias:
 ![JAVA](https://img.shields.io/static/v1?label=JAVA&message=BACKEND&color=0091EA&style=flat&logo=JAVA)
@@ -40,11 +38,11 @@
 * Se os testes forem realizados via Postman, abra o arquivo application.properties e deixe comentado essa configuração: server.servlet.context-path=/cadastro. Dessa forma: #server.servlet.context-path=/cadastro. Em seguida, basta seguir o passo a passo mostrado abaixo:
 
 ## Cadastrar, listar e editar dados do paciente:
-* GET: http://localhost:8080/clientes . É realizado a busca de todos os pacientes cadastrados.
+* GET: http://localhost:8080/pacientes . É realizado a busca de todos os pacientes cadastrados.
 
-* GET: http://localhost:8080/clientes/1 . É realizado a busca de um determinado paciente informando o seu Id. Neste caso, foi informado o Id: 1 como exemplo.
+* GET: http://localhost:8080/pacientes/1 . É realizado a busca de um determinado paciente informando o seu Id. Neste caso, foi informado o Id: 1 como exemplo.
 
-* POST: http://localhost:8080/clientes. É realizado o cadastro do paciente. Os dados devem ser enviados no formato JSON. Os campos são:
+* POST: http://localhost:8080/pacientes. É realizado o cadastro do paciente. Os dados devem ser enviados no formato JSON. Os campos são:
 {
     "nome": "",
     "sobrenome": "",
@@ -58,7 +56,7 @@
     "telefone": ""
 }
 
-* PUT: http://localhost:8080/clientes/1. É realizado a atualização dos dados do paciente, onde é necessário informar o seu Id. Neste caso, foi informado o Id: 1, como exemplo. Os dados devem ser enviados no formato JSON. Os campos são:
+* PUT: http://localhost:8080/pacientes/1. É realizado a atualização dos dados do paciente, onde é necessário informar o seu Id. Neste caso, foi informado o Id: 1, como exemplo. Os dados devem ser enviados no formato JSON. Os campos são:
 {
     "nome": "",
     "sobrenome": "",
@@ -71,7 +69,7 @@
     "telefone": ""
 }
 
-* DELETE: http://localhost:8080/clientes/1. Se o usuário tentar deletar um determinado paciente, será exibido uma mensagem customizada, pois o mesmo não tem permissão para excluir um cadastro. No exemplo, o usuário tentou deletar o paciente com o Id: 1.
+* DELETE: http://localhost:8080/pacientes/1. Se o usuário tentar deletar um determinado paciente, será exibido uma mensagem customizada, pois o mesmo não tem permissão para excluir um cadastro. No exemplo, o usuário tentou deletar o paciente com o Id: 1.
 
 
 ## Cadastrar, listar e editar dados do convênio:
@@ -79,7 +77,7 @@
 
 * GET: http://localhost:8080/convenios/1 . É realizado a busca de um determinado convênio informando o seu Id. Neste caso, foi usado o Id: 1 como exemplo.
 
-* POST: http://localhost:8080/convenios?cliente=1. É realizado o cadastro do convênio. Para a realização do cadastro, é necessário informar o Id do cliente. Neste caso, foi informado o Id: 1, como exemplo. Os dados devem ser enviados no formato JSON. Os campos são:
+* POST: http://localhost:8080/convenios?paciente=1. É realizado o cadastro do convênio. Para a realização do cadastro, é necessário informar o Id do paciente. Neste caso, foi informado o Id: 1, como exemplo. Os dados devem ser enviados no formato JSON. Os campos são:
 {
     "numCarteirinhaConvenio": ,
     "validadeCarteirinha": ""
